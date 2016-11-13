@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Casanova-rent Assistance</string>
+
+
+    <string name="lbl_tipo">Tipo</string>
+    <string name="cat_cinema">Mecánico</string>
+    <string name="cat_theater">Eléctrico</string>
+    <string name="cat_restaurant">Otro</string>
+
+    <string name="lbl_location">Que quieres ubicar?</string>
+
+
+    <!--<string name="google_maps_key"></string>-->
+    <string name="title_activity_place_location">Map</string>
+    <string name="no_location_detected">No se ha podido encontrar la señal del GPS. Asegurese de que este encendido en su dispositivo</string>
+    <string name="seleccione_tipo_de_falla">Seleccione tipo de falla</string>
+    <string name="ver_comentarios">Ver Comentarios</string>
+    <string name="ver_ruta">Ver ruta</string>
+    <string name="comment"></string>
+    <string name="date">Date</string>
+    <string name="iniciar_navegacion">Iniciar navegación</string>
+    <string name="nombre">nombre</string>
+    <string name="direccion">direccion</string>
+
+    <string name="title_search">Buscar talleres cercanos</string>
+</resources>
