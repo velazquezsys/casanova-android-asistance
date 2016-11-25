@@ -190,15 +190,11 @@ public class Place implements Serializable {
     public String getAllPhones() {
         StringBuilder stringBuilder = new StringBuilder();
 
-        /*setTel2("(777) 181 7390");
-        setTel3("(777) 152 5375");
-        setTel4("(777) 302 8114");*/
-
         if (getTel1() != null) {
             stringBuilder.append(getTel1() + "-");
         }
 
-        /*if (getTel2() != null) {
+        if (getTel2() != null) {
             stringBuilder.append(getTel2() + "-");
         }
 
@@ -208,9 +204,8 @@ public class Place implements Serializable {
 
         if (getTel4() != null) {
             stringBuilder.append(getTel4());
-        }*/
+        }
 
-        System.out.println("getAllPhones :" + stringBuilder.toString());
         return stringBuilder.toString();
     }
 

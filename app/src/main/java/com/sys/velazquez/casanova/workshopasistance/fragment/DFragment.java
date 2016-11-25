@@ -28,7 +28,6 @@ public class DFragment extends DialogFragment implements View.OnClickListener {
     Button bt_close;
     View rootView;
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

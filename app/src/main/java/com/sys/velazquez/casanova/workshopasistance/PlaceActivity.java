@@ -2,7 +2,6 @@ package com.sys.velazquez.casanova.workshopasistance;
 
 import android.app.ProgressDialog;
 import android.app.SearchManager;
-import android.app.SearchableInfo;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -36,8 +35,6 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.gson.Gson;
 
-import org.apache.log4j.Logger;
-
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
@@ -52,7 +49,6 @@ import com.sys.velazquez.casanova.workshopasistance.service.VolleyService;
 import com.sys.velazquez.casanova.workshopasistance.utils.Const;
 import com.sys.velazquez.casanova.workshopasistance.utils.RequestPlaces;
 import com.sys.velazquez.casanova.workshopasistance.utils.Utils;
-import com.sys.velazquez.casanova.workshopasistance.utils.log4j.MyLogger;
 
 import static com.sys.velazquez.casanova.workshopasistance.utils.Const.ID_CAT;
 
@@ -92,12 +88,11 @@ public class PlaceActivity extends AppCompatActivity implements GoogleApiClient.
 
         if (getIntent().getExtras() != null) {
             CAT = getIntent().getExtras().getInt(ID_CAT);
-            init(CAT);
+            init();
         } else {
             CAT = Utils.getCat(getApplicationContext());
-            init(CAT);
+            init();
         }
-
 
         //setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -112,7 +107,7 @@ public class PlaceActivity extends AppCompatActivity implements GoogleApiClient.
         buildGoogleApiClient();
 
         progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("Buscando talleres cercanos");
+        progressDialog.setMessage("Buscando talleres cercanos...");
         progressDialog.show();
         progressDialog.setCancelable(false);
 
@@ -164,10 +159,10 @@ public class PlaceActivity extends AppCompatActivity implements GoogleApiClient.
         return false;
     }
 
-    public void init(int cat) {
-        title = Utils.getNameCategory(cat);
+    public void init() {
+        title = Const.MECANICO;
         toolbar.setTitle(title);
-        toolbar.setLogo(Utils.getIconByCategory(cat, getApplicationContext()));
+        toolbar.setLogo(Utils.getIconByCategory(getApplicationContext()));
     }
 
     protected synchronized void buildGoogleApiClient() {
@@ -249,7 +244,6 @@ public class PlaceActivity extends AppCompatActivity implements GoogleApiClient.
         }
 
     }
-
 
     void loadService() {
 

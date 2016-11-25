@@ -1,4 +1,4 @@
-package com.sys.velazquez.casanova.workshopasistance.utils.log4j;
+package com.sys.velazquez.casanova.workshopasistance.utils;
 
 import android.graphics.Bitmap;
 

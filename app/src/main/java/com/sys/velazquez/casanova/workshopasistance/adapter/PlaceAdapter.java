@@ -70,7 +70,6 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.PlaceHolder>
         return placeList.size();
     }
 
-
     @Override
     public Filter getFilter() {
         return null;

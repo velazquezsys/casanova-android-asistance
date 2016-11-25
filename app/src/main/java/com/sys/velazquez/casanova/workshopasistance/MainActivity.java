@@ -10,8 +10,6 @@ import android.view.View;
 import com.sys.velazquez.casanova.workshopasistance.utils.Utils;
 
 import static com.sys.velazquez.casanova.workshopasistance.utils.Const.CAT_MECANICO;
-import static com.sys.velazquez.casanova.workshopasistance.utils.Const.CAT_OTRO;
-import static com.sys.velazquez.casanova.workshopasistance.utils.Const.CAT_ELECTRICO;
 import static com.sys.velazquez.casanova.workshopasistance.utils.Const.ID_CAT;
 
 /**
@@ -20,7 +18,6 @@ import static com.sys.velazquez.casanova.workshopasistance.utils.Const.ID_CAT;
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = MainActivity.class.getSimpleName();
-    //private static Logger LOG = MyLogger.getLogger(MainActivity.class);
 
     Bundle bundle = new Bundle();
     Toolbar toolbar;
@@ -28,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //LOG.info("Inicia la actividad principal MainActivity");
         setContentView(R.layout.activity_main);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle(getResources().getString(R.string.app_name));
@@ -41,18 +37,7 @@ public class MainActivity extends AppCompatActivity {
         sendIntentPlace(bundle);
     }
 
-    public void searchTheater(View view) {
-        bundle.putInt(ID_CAT, CAT_ELECTRICO);
-        sendIntentPlace(bundle);
-    }
-
-    public void searchRestaurant(View view) {
-        bundle.putInt(ID_CAT, CAT_OTRO);
-        sendIntentPlace(bundle);
-    }
-
     public void sendIntentPlace(Bundle bundle) {
-        //LOG.info(String.format("Se ha seleccionado busqueda por tipo: %d", bundle.toString()));
         try {
             if (Utils.isOnline(this)) {
                 Utils.saveCat(bundle, getApplicationContext());

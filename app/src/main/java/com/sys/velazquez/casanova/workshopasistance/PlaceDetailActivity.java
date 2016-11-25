@@ -21,9 +21,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.DisplayMetrics;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -38,7 +36,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.StringRequest;
-import com.google.android.gms.vision.text.Text;
 import com.google.gson.Gson;
 import com.sys.velazquez.casanova.workshopasistance.fragment.DFragment;
 import com.sys.velazquez.casanova.workshopasistance.model.CommentsList;
@@ -47,11 +44,10 @@ import com.sys.velazquez.casanova.workshopasistance.service.VolleyService;
 import com.sys.velazquez.casanova.workshopasistance.utils.Const;
 import com.sys.velazquez.casanova.workshopasistance.utils.RequestPlaces;
 import com.sys.velazquez.casanova.workshopasistance.utils.Utils;
-import com.sys.velazquez.casanova.workshopasistance.utils.log4j.Singleton;
+import com.sys.velazquez.casanova.workshopasistance.utils.Singleton;
 
 import org.json.JSONObject;
 
-import java.io.ByteArrayOutputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
@@ -145,7 +141,7 @@ public class PlaceDetailActivity extends AppCompatActivity implements RatingBar.
         Log.d(TAG, "setPlaceInView");
         try {
             if (place != null) {
-                toolbar.setLogo(Utils.getIconByCategory(place.getIdCat(), getApplicationContext()));
+                toolbar.setLogo(Utils.getIconByCategory(getApplicationContext()));
                 toolbar.setTitle(place.getName());
                 //tv_name.setText(place.getName());
                 tv_address.setText(place.getAddress());
@@ -175,7 +171,7 @@ public class PlaceDetailActivity extends AppCompatActivity implements RatingBar.
 
                                 TextView other_num = new TextView(this);
                                 other_num.setText(phone_divider[i]);
-                                other_num.setTextSize(14);
+                                other_num.setTextSize(15);
                                 other_num.setTextColor(blue_color);
                                 other_num.setTypeface(null,Typeface.BOLD);
                                 other_num.setOnClickListener(new View.OnClickListener() {
@@ -184,9 +180,7 @@ public class PlaceDetailActivity extends AppCompatActivity implements RatingBar.
                                         onClickTelefono(v);
                                     }
                                 });
-
                                 ll_phone_content.addView(other_num);
-
                             }
                         }
                     }else
@@ -289,7 +283,7 @@ public class PlaceDetailActivity extends AppCompatActivity implements RatingBar.
         if (Utils.isOnline(this)) {
 
             progressDialogComment = new ProgressDialog(this);
-            progressDialogComment.setMessage("Obteniendo detalles del taller");
+            progressDialogComment.setMessage("Obteniendo detalles del taller...");
             progressDialogComment.show();
             progressDialogComment.setCancelable(false);
 
@@ -357,7 +351,7 @@ public class PlaceDetailActivity extends AppCompatActivity implements RatingBar.
         if (Utils.isOnline(this)) {
 
             progressDialogComment = new ProgressDialog(this);
-            progressDialogComment.setMessage("Obteniendo comentarios");
+            progressDialogComment.setMessage("Obteniendo comentarios...");
             progressDialogComment.show();
             progressDialogComment.setCancelable(false);
 
@@ -431,7 +425,6 @@ public class PlaceDetailActivity extends AppCompatActivity implements RatingBar.
             Log.e(TAG, e.getMessage());
         }
     }
-
 
     private void resetFields() {
         Log.d(TAG, "resetFields");
@@ -537,28 +530,22 @@ public class PlaceDetailActivity extends AppCompatActivity implements RatingBar.
         i.putExtra("workshop_name",place.getName());
         i.putExtra("workshop_id",place.getIdCat());
         startActivity(i);
-
-
     }
 
     @Override
     public void onLocationChanged(Location location) {
-
     }
 
     @Override
     public void onStatusChanged(String s, int i, Bundle bundle) {
-
     }
 
     @Override
     public void onProviderEnabled(String s) {
-
     }
 
     @Override
     public void onProviderDisabled(String s) {
-
     }
 
 }

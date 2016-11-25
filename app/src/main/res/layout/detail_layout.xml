@@ -112,7 +112,8 @@
                                 android:layout_height="100dp"
                                 android:src="@drawable/workshop_generic"
                                 android:layout_gravity="center"
-                                android:onClick="onClickImageWorkshop"/>
+                                android:onClick="onClickImageWorkshop"
+                                android:elevation="1dp" />
 
                             <TextView
                                 android:layout_width="wrap_content"

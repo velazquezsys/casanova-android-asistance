@@ -14,12 +14,10 @@ import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.RetryPolicy;
 import com.google.android.gms.maps.model.LatLng;
 
-import org.apache.log4j.Logger;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.sys.velazquez.casanova.workshopasistance.R;
-import com.sys.velazquez.casanova.workshopasistance.utils.log4j.MyLogger;
 
 import static com.sys.velazquez.casanova.workshopasistance.utils.Const.ID_CAT;
 
@@ -29,59 +27,24 @@ import static com.sys.velazquez.casanova.workshopasistance.utils.Const.ID_CAT;
 public class Utils {
 
     public final static String TAG = Utils.class.getSimpleName();
-    private static Logger LOG;
 
-    static {
-        LOG = MyLogger.getLogger(Utils.class);
-    }
-
-    public static String getNameCategory(int cat) {
-        String name = null;
-        switch (cat) {
-            case Const.CAT_MECANICO:
-                name = Const.MECANICO;
-                break;
-            case Const.CAT_ELECTRICO:
-                name = Const.ELECTRICO;
-                break;
-            case Const.CAT_OTRO:
-                name = Const.OTRO;
-                break;
-        }
-        Log.d(TAG, name);
-        return name;
-    }
-
-    public static Drawable getIconByCategory(int cat, Context context) {
+    public static Drawable getIconByCategory(Context context) {
         Drawable imageId = null;
-        switch (cat) {
-            case Const.CAT_MECANICO:
-                imageId = context.getResources().getDrawable(R.drawable.icon_mecanico_48);
-                break;
-            case Const.CAT_ELECTRICO:
-                imageId = context.getResources().getDrawable(R.drawable.icon_electrico_48);
-                break;
-            case Const.CAT_OTRO:
-                imageId = context.getResources().getDrawable(R.drawable.icon_otro_48);
-                break;
-        }
+        imageId = context.getResources().getDrawable(R.drawable.icon_mecanico_48);
+
         return imageId;
     }
 
     public static boolean isOnline(Activity a) {
 
-        LOG.info("Validando el acceso a internet...");
         ConnectivityManager cm = (ConnectivityManager) a.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo netInfo = cm.getActiveNetworkInfo();
 
         if (netInfo != null && netInfo.isConnected()) {
-            LOG.info("Acceso a internet ok");
             return true;
         } else {
-            LOG.info("No se tiene conexion a internet :(");
-
             AlertDialog.Builder builder = new AlertDialog.Builder(a);
-            builder.setMessage("No tienes conexion internet");
+            builder.setMessage("Comprueba la conexión a internet");
             builder.setCancelable(true);
             builder.setPositiveButton("OK", null);
 
@@ -140,7 +103,6 @@ public class Utils {
             return jsonReult;
         }
     }
-
 
     public static RetryPolicy getRetryPolicy() {
         return new DefaultRetryPolicy(

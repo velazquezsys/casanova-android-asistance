@@ -10,8 +10,6 @@ public class RequestPlaces {
     private static String API_GET_COMMENTS = "getComentarios";
     private static String API_SEND_COMMENT = "setComentario";
     private static String API_GET_LOCATION = "getUbicaciones2";
-    //private static String API_GOOGLE_MATRIX = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=";
-
 
     public static String API_GET_COMMENTS() {
         StringBuilder stringBuilder = new StringBuilder();
@@ -36,16 +34,5 @@ public class RequestPlaces {
         stringBuilder.append(API_GET_LOCATION);
         return stringBuilder.toString();
     }
-
-    /*public static String API_GET_MATRIX(LatLng origen, LatLng destino) {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(API_GOOGLE_MATRIX);
-        stringBuilder.append(origen.latitude + "," + origen.longitude);
-        stringBuilder.append("&destinations=");
-        stringBuilder.append(destino.latitude + "," + destino.longitude);
-        stringBuilder.append("&mode=driving&language=mx-MX");
-        return stringBuilder.toString();
-    }*/
-
 
 }

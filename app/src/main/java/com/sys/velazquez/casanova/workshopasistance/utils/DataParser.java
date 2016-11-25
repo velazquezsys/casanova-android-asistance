@@ -64,10 +64,8 @@ public class DataParser {
         } catch (Exception e) {
         }
 
-
         return routes;
     }
-
 
     /**
      * Method to decode polyline points

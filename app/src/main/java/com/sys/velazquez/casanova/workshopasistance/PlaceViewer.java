@@ -7,7 +7,7 @@ import com.davemorrissey.labs.subscaleview.ImageSource;
 import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView;
 import com.sys.velazquez.casanova.workshopasistance.model.Place;
 import com.sys.velazquez.casanova.workshopasistance.utils.Utils;
-import com.sys.velazquez.casanova.workshopasistance.utils.log4j.Singleton;
+import com.sys.velazquez.casanova.workshopasistance.utils.Singleton;
 
 /**
  * Created by edergomez on 10/11/16.
@@ -26,10 +26,9 @@ public class PlaceViewer extends Activity{
 
         Singleton sin=Singleton.getInstance();
 
-
         int ID = getIntent().getIntExtra("workshop_id", 0);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setLogo(Utils.getIconByCategory(ID, getApplicationContext()));
+        toolbar.setLogo(Utils.getIconByCategory(getApplicationContext()));
         toolbar.setTitle(getIntent().getStringExtra("workshop_name"));
 
         imageView = (SubsamplingScaleImageView)findViewById(R.id.iv_image_workshop);
